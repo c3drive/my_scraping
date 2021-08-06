@@ -15,7 +15,8 @@ RUN /usr/local/bin/python -m pip install --upgrade pip && \
     pip install cssselect && \
     pip install requests && \
     pip install beautifulsoup4 && \
-    pip install requests-oauthlib &&
+    pip install requests-oauthlib && \
+    pip install wikiextractor
 
 # forego
 RUN wget https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.deb && \
