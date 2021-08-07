@@ -5,7 +5,11 @@ ARG VARIANT="3.9"
 FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 # [Option] Install Node.js
-ARG INSTALL_NODE="true"
+# trueにすると、/usr/local/share/nvm/nvm.shでエラーになる。
+# [2021-08-07T12:41:55.094Z] Version 'lts' not found - try `nvm ls-remote` to browse available versions.
+# [2021-08-07T12:41:55.458Z] The command '/bin/sh -c if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi' returned a non-zero code: 3
+# nvm ls-remote`でnvmを更新することでnodeバージョンの指定が可能になり解消するが、今までできていたことが8/7になってできなくなったため不明。特に用途もないのでnoneにしておく。
+ARG INSTALL_NODE="false"
 ARG NODE_VERSION="lts/*"
 RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
@@ -22,6 +26,8 @@ RUN /usr/local/bin/python -m pip install --upgrade pip && \
 RUN wget https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.deb && \
     apt-get -y install ./forego-stable-linux-amd64.deb
 
+# sqlite
+RUN apt-get install -y sqlite3
 # [Optional] If your pip requirements rarely change, uncomment this section to add them to the image.
 # COPY requirements.txt /tmp/pip-tmp/
 # RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requirements.txt \

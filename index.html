@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>トップページ｜gihyo.jp … 技術評論社</title>
+<meta name="description" content="技術評論社提供のIT関連コンテンツサイト" />
+<meta name="keywords" content="技術評論社,gihyo.jp," />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:site" content="@gihyojp"/>
+<meta property="og:title" content="トップページ" />
+<meta property="og:type" content="website" />
+<meta property="og:description" content="技術評論社提供のIT関連コンテンツサイト" />
+<meta property="og:url" content="https://gihyo.jp/" />
+<meta property="og:image" content="https://gihyo.jp/assets/images/logo.png" />
+<meta property="og:site_name" content="gihyo.jp" />
+<meta property="fb:app_id" content="185201618169441" />
+
+
+<base href="/" />
+<link rel="canonical" href="https://gihyo.jp/" />
+<link rel="icon" href="/favicon.ico" type="image/x-icon" /><link rel="icon" href="/favicon.svg" size="any" type="image/svg+xml" />
+<link rel="publisher" href="https://plus.google.com/113010907831932672815" />
+<link rel="alternate" type="application/rss+xml" title="gihyo.jp RSS1.0" href="http://gihyo.jp/feed/rss1" />
+<link rel="alternate" type="application/rss+xml" title="gihyo.jp RSS2.0" href="http://gihyo.jp/feed/rss2" />
+<link rel="alternate" type="application/atom+xml" title="gihyo.jp Atom" href="http://gihyo.jp/feed/atom" />
+<!--[if lt IE 9]>
+<script src="//ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+<style>*{font-size:100%;list-style:none;margin:0;padding:0}@font-face{font-family:"gihyojp";src:local("Hiragino Sans"),local("BIZ UDゴシック"),local("メイリオ")}@font-face{font-family:"gihyojp";src:local(-apple-system),local(BlinkMacSystemFont),local("Segoe UI"),local("Roboto"),local("Ubuntu"),local(system-ui);unicode-range:U+0000-05C7}body{color:#333;font-family:gihyojp,sans-serif;font-size:12px;line-height:1.4;text-align:center;-webkit-text-autospace:ideograph-numeric ideograph-alpha;-moz-text-autospace:ideograph-numeric ideograph-alpha;-ms-text-autospace:ideograph-numeric ideograph-alpha;text-autospace:ideograph-numeric ideograph-alpha}a{color:#05C;text-decoration:none;word-wrap:break-word}a:visited{color:#3388cc}.clearfix{display:block}.clearfix:after{clear:both;content:"";display:block;height:0}img{border:none;vertical-align:top;-ms-interpolation-mode:bicubic}#wrapper{position:relative;width:985px;margin:0 auto;text-align:left}#header{position:relative;-webkit-text-size-adjust:100%;-ms-interpolation-mode:bicubic}#header:after{clear:both;content:'';display:block;height:0}#header #logo{padding:22px 0}#header #logo a{display:inline-block}#header .utility{border-top:3px solid #0068B7;position:absolute;right:0;top:0}#header ul{display:block;float:left;left:0px;padding-top:22px;top:0px}#header ul li{border-collapse:separate;display:block;float:left;height:21px;width:auto}#header ul li a{display:block;-webkit-font-feature-settings:'kern','liga','pwid';-moz-font-feature-settings:'kern','liga','pwid';font-feature-settings:'kern','liga','pwid';height:21px;text-rendering:optimizelegibility}#header #shortcut li a{background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAKCAMAAACg0N8BAAAAS1BMVEX///8TkxwZniPw+PEaoSRGtE7x+fGY0ZxuwHRtv3O13bjU7dY+pEUnpDASkRsYnCEXmiAUlh4opjIwnziLzZDS6tSo2qwimioVmB/5voWQAAAAAXRSTlMAQObYZgAAADRJREFUeF4VxcUBwDAQxECZIczpv1LfzkNiDsh6PZpzXwcOU+CXxi6Vzdzg/fIC8ZwwKasDUJQCMERw8roAAAAASUVORK5CYII=) no-repeat 15px center;background-size:auto 5px;color:#333;display:block;font-size:11px;font-weight:bold;line-height:21px;padding:0 15px 0 22px;white-space:nowrap;width:auto}#header #searchForm{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAYCAMAAAAmopZHAAABelBMVEX///+ZmZm/v7/////y8vLl5eXv7+/m5ua2trampqafn5/5+fnS0tKsrKwzfcmzs7Pf39/s7Oy5ubkqcbo5hdP39/fz+P0ud8E0fsuPvu4jaK9llMQ8idjn5+fP4/fP4vaNvOzGxsbH2OlsqOUnbrZ9s+pCkeLZ2dlan+bn8fs5htQxe8bJycn6+vqenp6Nve07iNeKu+309PSCqNDx9flGkuBQktU8h9Nbj8RnpOFIkdsveMO7u7s7htJPkdRno+E4g9F8seg+i9s5hdKwy+ZajsMsdb4karH8/PyCqdDExMTk7fYzfso3gs8xesVHkNv9/f3x9vo2gc3KysrL3vHc3Nw6fsM4hNGgv9/o6OhMld/Nzc1mpugqcrtGkuFKk94+i9oyfcigv95KlN/t7e1ZjcI8itna6PcyfMhbkMVJk97MzMw7h9ZIkt26uro7iNYsdL1+s+ptqeabxfC/1u0tdb/w8PAsdL58suiwy+c2gc45fMHa6fdtqedp8vz/AAAAAXRSTlMAQObYZgAAAVBJREFUeF5tkGVvK0EMRccDyxBmZigzMzMz9zEzv//e6U7SpGrOJ+tcy7oycijawFHTFDXDVKjztkkXubANWXZhjQ+NbQBNJuVE8h/RPQC47lXQ3IHuwsVJ18A3ggFcD1fkwFkpnPo1PPjqt66CKbwNNukufe3MZ0d8oYNVvvbM8QBGuRDu/Pz/8oUv9P1IBziteTnRn8p/uZ3pOrQWXhMTcHvNJ99PZ99cxSp/qufzxAbcI7zr5bvJzdjHyroVzC0TDTAVNTGZGPfNTu1Yo95Ixg1gOD4NGt2rWmvXG0HvYpR4oIM5ngIvOvf35ydvLhLt4zUx8zuFdvmob98MPe/NEK5BiW85fkkBUIs6IUT2wD1jSEAV4Jg2CBqvcxumEB1YaQ62JLbfhvGKwRh7FCD/MXOI/5BEgOq091BK/byJCCT0BOkDQBtDLQLGQa0DegfVNig5kouP/AAAAABJRU5ErkJggg==) no-repeat 0 26px;background-size:auto 12px;display:block;float:left;height:20px;margin-left:15px;padding-top:20px;padding-left:15px;width:auto}#header #searchForm #searchFormKeyword{background:#FFF;border:1px solid #CCC;border-radius:2px;-moz-box-sizing:border-box;box-sizing:border-box;font-size:12px;height:24px;line-height:2;margin-right:4px;padding:0 0.5em;position:relative;width:267px}.submitButton{background:#33A61D;border:1px solid #098a13;border-radius:2px;-moz-box-sizing:border-box;box-sizing:border-box;color:#FFF;cursor:pointer;display:block;float:right;font-weight:bold;line-height:2;padding:0 0.8em;text-align:center;text-shadow:0 0 2px #098a13;-webkit-appearance:none}#header #searchForm #searchFormSubmit{font-size:11px}#header #headerBanner01,#header #headerBanner02{margin-bottom:15px}#header #headerBanner01{float:left}#header #headerBanner02{float:right}.headCategoryNavigation{display:block;line-height:1;margin-bottom:4px;-ms-interpolation-mode:bicubic;position:relative;-webkit-text-size-adjust:100%;width:100%}.headCategoryNavigation .main{background:#0068B7;display:block;width:100%}.headCategoryNavigation .main li{float:left;display:block;height:34px;margin-top:4px;width:auto}.headCategoryNavigation .main li:first-child{margin-left:5px}.headCategoryNavigation .main .change{float:right}.headCategoryNavigation .main li a{color:#FBFBFF;display:block;-webkit-font-feature-settings:"kern", "liga", "pwid";-moz-font-feature-settings:"kern", "liga", "pwid";font-feature-settings:"kern", "liga", "pwid";font-size:12px;font-weight:bold;height:34px;line-height:30px;padding:0 20px;text-align:center;text-rendering:optimizelegibility;text-shadow:0 0 2px #144b83;width:auto}.headCategoryNavigation .main .change a{font-weight:normal;padding-left:0}.headCategoryNavigation .main .change a:before{content:'▶ ';font-size:0.5em;vertical-align:middle}#topicPath{-webkit-font-feature-settings:"kern", "liga", "palt";-moz-font-feature-settings:"kern", "liga", "palt";font-feature-settings:"kern", "liga", "palt";line-height:1;overflow:hidden;padding:0 10px 15px 10px;position:relative;text-overflow:ellipsis;text-rendering:optimizelegibility;vertical-align:bottom;white-space:pre}#main{float:left;width:818px}#main #primary{float:left;font-size:117%;width:505px}#main #secondary{float:right;width:302px}#sub{float:right;width:157px}.readingContent01 p{margin:0 0 1em 0;line-height:1.9}
+</style>
+
+<!--[if lt IE 9]>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.4/jquery.min.js"></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<!--<![endif]-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DL906V3TN7"></script>
+<script type='text/javascript'>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+(function() {
+var gads = document.createElement('script');
+gads.async = true;
+gads.type = 'text/javascript';
+var useSSL = 'https:' == document.location.protocol;
+gads.src = (useSSL ? 'https:' : 'http:') + 
+'//www.googletagservices.com/tag/js/gpt.js';
+var node = document.getElementsByTagName('script')[0];
+node.parentNode.insertBefore(gads, node);
+})();
+</script>
+<script defer type='text/javascript'>
+googletag.cmd.push(function() {
+googletag.defineSlot('/33530947/top-bigbanner', [728,90], 'div-gpt-ad-1369887592403-0').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-centertextlink1', [300,16], 'div-gpt-ad-1369887592403-2').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-centertextlink2', [300,16], 'div-gpt-ad-1369887592403-3').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-rectangle1', [300,300], 'div-gpt-ad-1369887592403-4').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-rectangle2', [300,300], 'div-gpt-ad-1369887592403-5').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-mainregularbanner', [468,60], 'div-gpt-ad-1369887592403-7').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-textlink1', [485,16], 'div-gpt-ad-1369887592403-8').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-textlink2', [485,16], 'div-gpt-ad-1369887592403-9').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-articlerectangle', [336,280], 'div-gpt-ad-1369887592403-10').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-delimiterregularbanner', [468,60], 'div-gpt-ad-1369887592403-11').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-delimiterrectangle', [300,300], 'div-gpt-ad-1369887592403-12').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-minibanner', [243,90], 'div-gpt-ad-1369887592403-13').addService(googletag.pubads());
+googletag.defineSlot('/33530947/top-smallrectangle', [300,100], 'div-gpt-ad-1369887592403-14').addService(googletag.pubads());
+
+googletag.pubads().enableSingleRequest();
+googletag.enableServices();
+});
+</script>
+<script defer>var textAd = function() {setTimeout(function(){
+  console.log('pri');
+  var obsPTA = new MutationObserver(function(records) {
+    records.forEach(function(recod) {
+      Array.from(recod.addedNodes).filter(function($node) {
+        if ($node.nodeName === 'IFRAME') {
+          return true;
+        }
+        return false;
+      }).forEach(function($node) {
+        if ($node.contentWindow.document.readyState === 'complete') {
+          console.log('.');
+          tadclip($node);
+          return;
+        }
+        console.log(',');
+        $node.contentWindow.document.addEventListener('DOMContentLoaded', function(){setTimeout(tadclip($node), 50)});
+        return;
+      });
+    });
+  });
+
+  var tadclip = function ($obj) {
+    var $base, $body, $style, $tmp;
+    $obj.parentNode.parentNode.style.height = 'auto';
+    $base = $obj.contentWindow.document.querySelector('html');
+    $body = $obj.contentDocument.querySelector('body');
+    if (typeof $base === 'undefined' || typeof $body === 'undefined') {
+      return;
+    }
+    $style = document.createElement('style');
+    $style.textContent = 'body{font-family:Arial,sans-serif;font-size:14px;line-height:18px;padding-top:10px}span{display:block;border-bottom:1px solid #E5E5E5;padding-bottom:10px}a{color:#05C;text-decoration:none;padding:4px 0}a span{border-bottom:none;padding-bottom:2px}b{padding:0 0 0 18px;background:url(/assets/templates/gihyojp2007/image/pr13x13.gif) 0px 0 no-repeat}a:hover{color:#38C;text-decoration:underline}body>br{display:none}';
+    $body.insertBefore($style, $body.firstChild);
+    $tmp = $body.querySelector('.GoogleActiveViewElement');
+    if (typeof $tmp === 'object' && $tmp !== null && $tmp.lastElementChild.nodeName === 'BR') {
+      $tmp.removeChild($tmp.lastElementChild);
+    }
+    $tmp.style.display = 'inline-block';
+    $tmp.style.width = '100%';
+    h = $base.offsetHeight;
+    $obj.height = h;
+    $style = void 0;
+    $tmp = void 0;
+    $body = void 0;
+    $base = void 0;
+    $obj = void 0;
+    return;
+  }
+
+  var $target = document.querySelector('#primaryTopTextPr .textAdList01, #primaryTopTextPr .textAdList02');
+  if (typeof $target === 'object' && $target !== null) {
+    $target.querySelectorAll('.is-banner').forEach(function($node){$node.style.height = '0';});
+    var $ptt = document.getElementById('primaryTopTextPr');
+    if (typeof $ptt === 'object' && $ptt !== null) {
+      $ptt.style.height = 'auto';
+      $ptt = void 0;
+    }
+
+    obsPTA.observe($target, {childList: true, subtree: true});
+    $target = void 0;
+
+    setTimeout(function(){
+      obsPTA.disconnect();
+      document.querySelectorAll('#primaryTopTextPr .is-banner > script').forEach(function($node) {
+        $node.parentNode.parentNode.removeChild($node.parentNode);
+        $node = void 0;
+      });
+    }, 5000);
+  }
+}, 50);
+setTimeout(function(){
+  console.log('sec');
+  var obsSTA = new MutationObserver(function(records) {
+    records.forEach(function(recod) {
+      Array.from(recod.addedNodes).filter(function($node) {
+        if ($node.nodeName === 'IFRAME') {
+          return true;
+        }
+        return false;
+      }).forEach(function($node) {
+        if ($node.contentWindow.document.readyState === 'complete') {
+          console.log(':');
+          ctadclip($node);
+          return;
+        }
+        console.log(';');
+        $node.contentWindow.document.addEventListener('DOMContentLoaded', function(){setTimeout(ctadclip($node), 50)});
+        return;
+      });
+    });
+  });
+
+  var ctadclip = function ($obj) {
+    var $base, $body, $style, $tmp;
+    $obj.parentNode.parentNode.style.height = 'auto';
+    $base = $obj.contentWindow.document.querySelector('html');
+    $body = $obj.contentDocument.querySelector('body');
+    if (typeof $base === 'undefined' || typeof $body === 'undefined') {
+      return;
+    }
+    $style = document.createElement('style');
+    $style.textContent = 'body{font-family:Arial,sans-serif;font-size:12px;line-height:16px;padding-top:4px;text-rendering:optimizeLegibility;-webkit-font-feature-settings:"kern","liga","palt";-moz-font-feature-settings:"kern","liga","palt";font-feature-settings:"kern","liga","palt"}span{display:block}a{color:#05C;text-decoration:none;font-size:14px;line-height:19px}b{border-bottom:none;padding-bottom:2px}b{padding:6px 0 0 15px;background:url(/assets/templates/gihyojp2007/image/bg/pr_02.gif) 0px 10px no-repeat}a:hover{color:#38C;text-decoration:underline}body>br{display:none}';
+    $body.insertBefore($style, $body.firstChild);
+    $tmp = $body.querySelector('.GoogleActiveViewElement');
+    if (typeof $tmp === 'object' && $tmp !== null && $tmp.lastElementChild.nodeName === 'BR') {
+      $tmp.removeChild($tmp.lastElementChild);
+    }
+    $tmp.style.display = 'inline-block';
+    $tmp.style.width = '100%';
+    h = $base.offsetHeight;
+    $obj.height = h;
+    $style = void 0;
+    $tmp = void 0;
+    $body = void 0;
+    $base = void 0;
+    $obj = void 0;
+    return;
+  }
+
+  var $target = document.querySelector('#secondaryTopTextPr .prList01');
+  if (typeof $target === 'object' && $target !== null) {
+    $target.querySelectorAll('.is-banner').forEach(function($node){$node.style.height = '0';});
+    var $stt = document.getElementById('secondaryTopTextPr');
+    if (typeof $stt === 'object' && $stt !== null) {
+      $stt.style.height = 'auto';
+      $stt = void 0;
+    }
+
+    obsSTA.observe($target, {childList: true, subtree: true});
+    $target = void 0;
+
+    setTimeout(function(){
+      obsSTA.disconnect();
+      document.querySelectorAll('#secondaryTopTextPr .is-banner > script').forEach(function($node) {
+        $node.parentNode.parentNode.removeChild($node.parentNode);
+        $node = void 0;
+      });
+    }, 5000);
+  }
+}, 50);
+};if (document.readyState === 'complete') {textAd();} else {document.addEventListener('DOMContentLoaded', function(){textAd();});}</script></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+<div id="wrapper">
+
+<header role="banner">
+<div id="header" itemscope itemtype="http://schema.org/WPHeader">
+
+<h1 id="logo"><a href="/"><img src="/assets/templates/gihyojp2007/image/gihyojp_logo.png" alt="gihyo.jp" width="141" height="27" /></a></h1>
+
+<div class="utility">
+
+<ul id="shortcut">
+
+<li class="num02"><a href="/site/inquiry">お問い合わせ</a></li>
+<li class="num03"><a href="/site/profile">会社案内</a></li>
+</ul>
+
+<div id="searchForm">
+<form action="/result"><input id="searchFormKeyword" name="query" type="text" value="検索したい用語を入力" /><input id="searchFormSubmit" class="submitButton" value="検索" type="submit" /></form>
+</div>
+
+</div>
+
+<div id="headerBanner01"><div id="div-gpt-ad-1369887592403-0" style="min-width:728px; min-height:90px; margin:0 auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-0'); });
+</script>
+</div>
+</div>
+<div id="headerBanner02"><div id="div-gpt-ad-1369887592403-13" style="min-width:243px; min-height:90px; margin:0 auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-13'); });
+</script>
+</div>
+</div>
+</div>
+
+
+
+
+<div id="categoryNavigation" class="headCategoryNavigation">
+<ul class="main clearfix">
+<li><a href="/dev" title="DEVELOPER STAGE">デベロッパ</a></li>
+<li><a href="/admin" title="ADMINISTRATOR STAGE">アドミニストレータ</a></li>
+<li><a href="/design" title="WEB+DESIGN STAGE">WEB＋デザイン</a></li>
+<li><a href="/lifestyle" title="LIFESTYLE STAGE">ライフスタイル</a></li>
+<li class="change"><a href="/book" title="書籍案内">書籍案内</a></li>
+<li class="change"><a href="https://gihyo.jp/dp" title="Gihyo Digital Publishing">電子書籍</a></li>
+<li class="change"><a href="https://direct.gihyo.jp" title="Gihyo Direct">直販</a></li></ul>
+</div>
+
+<div id="topicPath" itemprop="breadcrumb">
+<span class="B_crumbBox"><span class="B_currentCrumb">トップページ</span></span>
+</div>
+</header>
+<div id="content" class="clearfix">
+<div id="main">
+<article role="main">
+<div id="primary">
+<div id="featureArticle" class="sectionBlock01">
+<h2>おすすめ記事</h2>
+<dl class="featureList01">
+<dt><a href="/admin/serial/01/codt2021"><img src="/assets/images/ICON/2021/thumb/TH13_1855_codt2021.jpg" alt=""運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方" title=""運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方" width="13" height="13" /></a>&nbsp;<a href="/admin/serial/01/codt2021">"運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方</a></dt>
+<dd class="lead clearfix"><p class="data2">2021年7月～開催中の「Cloud Operator Days Tokyo 2021」がなぜ注目のイベントなのか，2回にわたって紹介します。</p></dd>
+<dt><a href="/news/interview/01/ml_engineer"><img src="/assets/images/ICON/2021/thumb/TH13_1856_closstolk_book210727.png" alt="『機械学習を解釈する技術』＆『施策デザインのための機械学習入門』著者陣によるクロストーク" title="『機械学習を解釈する技術』＆『施策デザインのための機械学習入門』著者陣によるクロストーク" width="13" height="13" /></a>&nbsp;<a href="/news/interview/01/ml_engineer">『機械学習を解釈する技術』＆『施策デザインのための機械学習入門』著者陣によるクロストーク</a></dt>
+<dd class="lead clearfix"><p class="data2">2021年8月に発売される『機械学習を解釈する技術』の著者である森下光之助氏と，『施策デザインのための機械学習入門』を共著した齋藤優太氏，安井翔太氏の3人が集まり，執筆の経緯や書籍への想いについて語りました。</p></dd>
+<dt><a href="/news/interview/2021/05/1801"><img src="/assets/images/ICON/2021/thumb/TH13_1848_cybozu_Labs10.png" alt="新規のテーマより“自分が作りたいもの”を ―歴代卒業生とメンターが語る「サイボウズ・ラボユース」10年間の軌跡" title="新規のテーマより“自分が作りたいもの”を ―歴代卒業生とメンターが語る「サイボウズ・ラボユース」10年間の軌跡" width="13" height="13" /></a>&nbsp;<a href="/news/interview/2021/05/1801">新規のテーマより“自分が作りたいもの”を ―歴代卒業生とメンターが語る「サイボウズ・<wbr>ラボユース」10年間の軌跡</a></dt>
+<dd class="lead clearfix"><p class="data2">サイボウズ・ラボ（株）が運営する若手エンジニア育成プログラム「サイボウズ・ラボユース」が3月31日に設立10周年を迎えました。これを記念して，ラボユースの魅力を語ってもらいました。</p></dd>
+
+</dl>
+<div id="primaryTopTextPr" style="height: 0">
+<dl class="textAdList02">
+<div id="div-gpt-ad-1369887592403-8" style="min-width:485px; min-height:auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-8'); });
+</script>
+</div>
+
+<div id="div-gpt-ad-1369887592403-9" style="min-width:485px; min-height:auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-9'); });
+</script>
+</div>
+
+</dl>
+</div>
+</div>
+
+<div id="centerBanner" class="primaryBanner">
+<div id="div-gpt-ad-1369887592403-7" style="min-width:468px; min-height:60px; margin:0 auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-7'); });
+</script>
+</div>
+
+</div>
+
+<div id="latestArticle" class="sectionBlock01">
+<h2>最新記事</h2>
+
+<h3 class="updateDay">8月6日（金）</h3>
+<dl class="dateDefinitionList02">
+<dt><a href="/admin" title="ADMINISTRATOR STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_admin.gif" width="13" height="13" alt="ADMINISTRATOR STAGE"></a> <a href="/admin/clip/01/ubuntu-topics">Ubuntu Weekly Topics</a></dt>
+<dd class="lead clearfix"><h3><a href="/admin/clip/01/ubuntu-topics/202108/06">2021年8月6日号　Ubuntu 20.04.3の準備，<wbr>LaunchpadのPython3マイグレーション</a></h3>
+<p class="data2">focal（20.04 LTS）が3回目のポイントリリースの時期に近づいているため，準備が進められています。</p><div class="logo"><a href="/admin/clip/01/ubuntu-topics"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2008/thumb/TH64_113_ubuntuTopi.png" data-srcset="/assets/images/ICON/2008/thumb/TH64_113_ubuntuTopi.png 1x, /assets/images/ICON/2008/thumb/TH128_113_ubuntuTopi.png 2x" alt="Ubuntu Weekly Topics" title="Ubuntu Weekly Topics" width="64" height="64" /><noscript><img src="/assets/images/ICON/2008/thumb/TH64_113_ubuntuTopi.png" alt="Ubuntu Weekly Topics" title="Ubuntu Weekly Topics" width="64" height="64" /></noscript></a></div></dd>
+<dt><a href="/admin" title="ADMINISTRATOR STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_admin.gif" width="13" height="13" alt="ADMINISTRATOR STAGE"></a> <a href="/admin/serial/01/codt2021">"運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方</a></dt>
+<dd class="lead clearfix"><h3><a href="/admin/serial/01/codt2021/0002">#02　編集部お勧めセッションはこれだ！ ―「Cloud Operator Days Tokyo 2021」を楽しもう</a></h3>
+<p class="data2">後編となる今回は，全60セッションの中から編集部の推しセッションご紹介，そして8/27（金）開催のライブイベントの見どころをお届けします。</p><div class="logo"><a href="/admin/serial/01/codt2021"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2021/thumb/TH64_1855_codt2021.jpg" data-srcset="/assets/images/ICON/2021/thumb/TH64_1855_codt2021.jpg 1x, /assets/images/ICON/2021/thumb/TH128_1855_codt2021.jpg 2x" alt="&quot;運用者に光を&quot;「Cloud Operator Days Tokyo 2021」の歩き方" title="&quot;運用者に光を&quot;「Cloud Operator Days Tokyo 2021」の歩き方" width="64" height="64" /><noscript><img src="/assets/images/ICON/2021/thumb/TH64_1855_codt2021.jpg" alt="&quot;運用者に光を&quot;「Cloud Operator Days Tokyo 2021」の歩き方" title="&quot;運用者に光を&quot;「Cloud Operator Days Tokyo 2021」の歩き方" width="64" height="64" /></noscript></a></div></dd>
+</dl>
+<div id="listBanner1" class="adBannerTop"><div id="div-gpt-ad-1369887592403-11" style="min-width:468px; min-height:60px; margin:0 auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-11'); });
+</script>
+</div>
+</div>
+<h3 class="updateDay">8月5日（木）</h3>
+<dl class="dateDefinitionList02">
+<dt><a href="/design" title="WEB+DESIGN STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_design.gif" width="13" height="13" alt="WEB+DESIGN STAGE"></a> <a href="/design/clip/01/weekly-web-tech">週刊Webテク通信</a></dt>
+<dd class="lead clearfix"><h3><a href="/design/clip/01/weekly-web-tech/202108/05">2021年8月第1週号 1位は，<wbr>UI／<wbr>UXのちょっとしたテクニックいろいろ，<wbr>気になるネタは，<wbr>ザッカーバーグ氏は110兆円規模のフェイスブックを「メタバース」企業にすると投資家に語る</a></h3>
+<p class="data2">ネットで見かけたWebテク（Webテクニック・Webテクノロジー）記事から，Webデザイナーの目で厳選したネタを週刊で紹介するこのコーナー。今回は，2021年7月26日～8月1日の間に見つけた記事のベスト5です。</p><div class="logo"><a href="/design/clip/01/weekly-web-tech"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2021/thumb/TH64_1842_weekly-webtech3.png" data-srcset="/assets/images/ICON/2021/thumb/TH64_1842_weekly-webtech3.png 1x, /assets/images/ICON/2021/thumb/TH128_1842_weekly-webtech3.png 2x" alt="週刊Webテク通信" title="週刊Webテク通信" width="64" height="64" /><noscript><img src="/assets/images/ICON/2021/thumb/TH64_1842_weekly-webtech3.png" alt="週刊Webテク通信" title="週刊Webテク通信" width="64" height="64" /></noscript></a></div></dd>
+<dt><a href="/lifestyle" title="LIFESTYLE STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_lifestyle.gif" width="13" height="13" alt="LIFESTYLE STAGE"></a> <a href="/lifestyle/clip/01/awt">Android Weekly Topics</a></dt>
+<dd class="lead clearfix"><h3><a href="/lifestyle/clip/01/awt/202108/05">2021年8月第1週　3番目のポストは元から存在しない？ モバイルOS温故知新</a></h3>
+<p class="data2">2021年8月第1週のAndroid関連のニュースをお届けします。
+</p><div class="logo"><a href="/lifestyle/clip/01/awt"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2013/thumb/TH64_1152_awt.png" data-srcset="/assets/images/ICON/2013/thumb/TH64_1152_awt.png 1x, /assets/images/ICON/2013/thumb/TH128_1152_awt.png 2x" alt="Android Weekly Topics" title="Android Weekly Topics" width="64" height="64" /><noscript><img src="/assets/images/ICON/2013/thumb/TH64_1152_awt.png" alt="Android Weekly Topics" title="Android Weekly Topics" width="64" height="64" /></noscript></a></div></dd>
+</dl>
+<div id="listBanner2" class="adBannerTop"><div id="div-gpt-ad-1369887592403-12" style="min-width:300px; min-height:250px; margin:0 auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-12'); });
+</script>
+</div>
+</div>
+<h3 class="updateDay">8月4日（水）</h3>
+<dl class="dateDefinitionList02">
+<dt><a href="/admin" title="ADMINISTRATOR STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_admin.gif" width="13" height="13" alt="ADMINISTRATOR STAGE"></a> <a href="/admin/serial/01/ubuntu-recipe">Ubuntu Weekly Recipe</a></dt>
+<dd class="lead clearfix"><h3><a href="/admin/serial/01/ubuntu-recipe/0677">第677回　aptで使うsources.listのオプションいろいろ</a></h3>
+<p class="data2">今回はaptパッケージのリポジトリ情報を指定するsources.listの内容とそのカスタマイズ方法について紹介します。</p><div class="logo"><a href="/admin/serial/01/ubuntu-recipe"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2008/thumb/TH64_112_ubuntuRecipe.png" data-srcset="/assets/images/ICON/2008/thumb/TH64_112_ubuntuRecipe.png 1x, /assets/images/ICON/2008/thumb/TH128_112_ubuntuRecipe.png 2x" alt="Ubuntu Weekly Recipe" title="Ubuntu Weekly Recipe" width="64" height="64" /><noscript><img src="/assets/images/ICON/2008/thumb/TH64_112_ubuntuRecipe.png" alt="Ubuntu Weekly Recipe" title="Ubuntu Weekly Recipe" width="64" height="64" /></noscript></a></div></dd>
+<dt><a href="/news" title="NEWS & REPORT"><img src="/assets/templates/gihyojp2007/image/logo_icon_news.gif" width="13" height="13" alt="NEWS & REPORT"></a> <a href="/news/interview/01/ml_engineer">『機械学習を解釈する技術』＆『施策デザインのための機械学習入門』著者陣によるクロストーク</a></dt>
+<dd class="lead clearfix"><h3><a href="/news/interview/01/ml_engineer/0001">第1回　自分にしか書けないものにこだわった ―異色の機械学習書誕生の裏側</a></h3>
+<p class="data2">2021年8月に発売される『機械学習を解釈する技術』の著者である森下光之助氏と，『施策デザインのための機械学習入門』を共著した齋藤優太氏，安井翔太氏の3人による対談。第1回は，書籍執筆のモチベーションのお話から。</p><div class="logo"><a href="/news/interview/01/ml_engineer"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2021/thumb/TH64_1856_closstolk_book210727.png" data-srcset="/assets/images/ICON/2021/thumb/TH64_1856_closstolk_book210727.png 1x, /assets/images/ICON/2021/thumb/TH128_1856_closstolk_book210727.png 2x" alt="『機械学習を解釈する技術』＆『施策デザインのための機械学習入門』著者陣によるクロストーク" title="『機械学習を解釈する技術』＆『施策デザインのための機械学習入門』著者陣によるクロストーク" width="64" height="64" /><noscript><img src="/assets/images/ICON/2021/thumb/TH64_1856_closstolk_book210727.png" alt="『機械学習を解釈する技術』＆『施策デザインのための機械学習入門』著者陣によるクロストーク" title="『機械学習を解釈する技術』＆『施策デザインのための機械学習入門』著者陣によるクロストーク" width="64" height="64" /></noscript></a></div></dd>
+</dl>
+<h3 class="updateDay">8月3日（火）</h3>
+<dl class="dateDefinitionList02">
+<dt><a href="/admin" title="ADMINISTRATOR STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_admin.gif" width="13" height="13" alt="ADMINISTRATOR STAGE"></a> <a href="/admin/clip/01/linux_dt">Linux Daily Topics</a></dt>
+<dd class="lead clearfix"><h3><a href="/admin/clip/01/linux_dt/202108/03">2021年8月3日　誰もメンテしてくれなくなったから ―openSUSEプロジェクト，<wbr>コミュニティポータルをシャットダウン</a></h3>
+<p class="data2">openSUSEプロジェクトは7月26日，2010年から運営してきたコミュニティポータルをシャットダウンすることを発表した。</p><div class="logo"><a href="/admin/clip/01/linux_dt"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2009/thumb/TH64_489_Linux_Daily_Topics.png" data-srcset="/assets/images/ICON/2009/thumb/TH64_489_Linux_Daily_Topics.png 1x, /assets/images/ICON/2009/thumb/TH128_489_Linux_Daily_Topics.png 2x" alt="Linux Daily Topics" title="Linux Daily Topics" width="64" height="64" /><noscript><img src="/assets/images/ICON/2009/thumb/TH64_489_Linux_Daily_Topics.png" alt="Linux Daily Topics" title="Linux Daily Topics" width="64" height="64" /></noscript></a></div></dd>
+<dt><a href="/dev" title="DEVELOPER STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_dev.gif" width="13" height="13" alt="DEVELOPER STAGE"></a> <a href="/dev/serial/01/mysql-road-construction-news">MySQL道普請便り</a></dt>
+<dd class="lead clearfix"><h3><a href="/dev/serial/01/mysql-road-construction-news/0152">第152回　パスワード検証必須ポリシーとログイン失敗時のアカウントの一時ロック</a></h3>
+<p class="data2">今回もMySQL 8.0で追加されたパスワード周りの機能として，バージョン8.0.13で追加されたパスワード検証必須ポリシーと，バージョン8.0.19で追加された，ログイン失敗時のアカウントの一時ロックについて説明します。</p><div class="logo"><a href="/dev/serial/01/mysql-road-construction-news"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2015/thumb/TH64_1428_mysql.png" data-srcset="/assets/images/ICON/2015/thumb/TH64_1428_mysql.png 1x, /assets/images/ICON/2015/thumb/TH128_1428_mysql.png 2x" alt="MySQL道普請便り" title="MySQL道普請便り" width="64" height="64" /><noscript><img src="/assets/images/ICON/2015/thumb/TH64_1428_mysql.png" alt="MySQL道普請便り" title="MySQL道普請便り" width="64" height="64" /></noscript></a></div></dd>
+<dt><a href="/news" title="NEWS & REPORT"><img src="/assets/templates/gihyojp2007/image/logo_icon_news.gif" width="13" height="13" alt="NEWS & REPORT"></a> <a href="/news/info">インフォメーション</a></dt>
+<dd><h3><a href="/news/info/2021/08/0301">オンラインチャリティイベント「Python Charity Talks in Japan 2021.09」開催</a></h3>
+</dd>
+</dl>
+<h3 class="updateDay">8月2日（月）</h3>
+<dl class="dateDefinitionList02">
+<dt><a href="/lifestyle" title="LIFESTYLE STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_lifestyle.gif" width="13" height="13" alt="LIFESTYLE STAGE"></a> <a href="/lifestyle/clip/01/monthly-cat">帰ってきた『技評ねこ部通信』</a></dt>
+<dd class="lead clearfix"><h3><a href="/lifestyle/clip/01/monthly-cat/202107/0802">2021年8月2日　す，<wbr>すけきよ！？</a></h3>
+<p class="data2">夏になると見たくなる，横溝正史シリーズ。ねこ部は，「病院坂の首くくりの家」が好きです。</p><div class="logo"><a href="/lifestyle/clip/01/monthly-cat"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2019/thumb/TH64_1729_neko2019.jpg" data-srcset="/assets/images/ICON/2019/thumb/TH64_1729_neko2019.jpg 1x, /assets/images/ICON/2019/thumb/TH128_1729_neko2019.jpg 2x" alt="帰ってきた『技評ねこ部通信』" title="帰ってきた『技評ねこ部通信』" width="64" height="64" /><noscript><img src="/assets/images/ICON/2019/thumb/TH64_1729_neko2019.jpg" alt="帰ってきた『技評ねこ部通信』" title="帰ってきた『技評ねこ部通信』" width="64" height="64" /></noscript></a></div></dd>
+<dt><a href="/dev" title="DEVELOPER STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_dev.gif" width="13" height="13" alt="DEVELOPER STAGE"></a> <a href="/dev/serial/01/oss-db-various-news">OSSデータベース取り取り時報</a></dt>
+<dd class="lead clearfix"><h3><a href="/dev/serial/01/oss-db-various-news/0072">第72回　6年間のOSS DBランキング，<wbr>MySQL 8.0.26リリース，<wbr>Postgres Vision Tokyo 2021開催</a></h3>
+<p class="data2">この連載はOSSコンソーシアム データベース部会のメンバーがお伝えしています。2015年9月の第1回から始まり，今回で満6歳の小学生になりました。これからもよろしくお願いいたします。</p><div class="logo"><a href="/dev/serial/01/oss-db-various-news"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2015/thumb/TH64_1433_oss-db-various-news.png" data-srcset="/assets/images/ICON/2015/thumb/TH64_1433_oss-db-various-news.png 1x, /assets/images/ICON/2015/thumb/TH128_1433_oss-db-various-news.png 2x" alt="OSSデータベース取り取り時報" title="OSSデータベース取り取り時報" width="64" height="64" /><noscript><img src="/assets/images/ICON/2015/thumb/TH64_1433_oss-db-various-news.png" alt="OSSデータベース取り取り時報" title="OSSデータベース取り取り時報" width="64" height="64" /></noscript></a></div></dd>
+</dl>
+<h3 class="updateDay">7月30日（金）</h3>
+<dl class="dateDefinitionList02">
+<dt><a href="/admin" title="ADMINISTRATOR STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_admin.gif" width="13" height="13" alt="ADMINISTRATOR STAGE"></a> <a href="/admin/clip/01/ubuntu-topics">Ubuntu Weekly Topics</a></dt>
+<dd class="lead clearfix"><h3><a href="/admin/clip/01/ubuntu-topics/202107/30">2021年7月30日号　impishの開発・<wbr>GNOME40のDaily Imageへの投下，<wbr>Backportsリポジトリの変化</a></h3>
+<p class="data2">この2週ほどはGNOME 40本体とNautilus 40がDaily build ISOイメージに投入される一方，デスクトップ関連のアップデートが行われています。</p><div class="logo"><a href="/admin/clip/01/ubuntu-topics"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2008/thumb/TH64_113_ubuntuTopi.png" data-srcset="/assets/images/ICON/2008/thumb/TH64_113_ubuntuTopi.png 1x, /assets/images/ICON/2008/thumb/TH128_113_ubuntuTopi.png 2x" alt="Ubuntu Weekly Topics" title="Ubuntu Weekly Topics" width="64" height="64" /><noscript><img src="/assets/images/ICON/2008/thumb/TH64_113_ubuntuTopi.png" alt="Ubuntu Weekly Topics" title="Ubuntu Weekly Topics" width="64" height="64" /></noscript></a></div></dd>
+</dl>
+<h3 class="updateDay">7月29日（木）</h3>
+<dl class="dateDefinitionList02">
+<dt><a href="/design" title="WEB+DESIGN STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_design.gif" width="13" height="13" alt="WEB+DESIGN STAGE"></a> <a href="/design/clip/01/weekly-web-tech">週刊Webテク通信</a></dt>
+<dd class="lead clearfix"><h3><a href="/design/clip/01/weekly-web-tech/202107/29">2021年7月第5週号 1位は，<wbr>Webデザイナーはそろそろスライダーを辞めるべきという提案，<wbr>気になるネタは，<wbr>音声SNS「Clubhouse」が脱ベータ，<wbr>招待・<wbr>承認が不要な正式サービスに</a></h3>
+<p class="data2">ネットで見かけたWebテク（Webテクニック・Webテクノロジー）記事から，Webデザイナーの目で厳選したネタを週刊で紹介するこのコーナー。今回は，2021年7月12日～25日の間に見つけた記事のベスト5です。</p><div class="logo"><a href="/design/clip/01/weekly-web-tech"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2021/thumb/TH64_1842_weekly-webtech3.png" data-srcset="/assets/images/ICON/2021/thumb/TH64_1842_weekly-webtech3.png 1x, /assets/images/ICON/2021/thumb/TH128_1842_weekly-webtech3.png 2x" alt="週刊Webテク通信" title="週刊Webテク通信" width="64" height="64" /><noscript><img src="/assets/images/ICON/2021/thumb/TH64_1842_weekly-webtech3.png" alt="週刊Webテク通信" title="週刊Webテク通信" width="64" height="64" /></noscript></a></div></dd>
+<dt><a href="/lifestyle" title="LIFESTYLE STAGE"><img src="/assets/templates/gihyojp2007/image/logo_icon_lifestyle.gif" width="13" height="13" alt="LIFESTYLE STAGE"></a> <a href="/lifestyle/clip/01/awt">Android Weekly Topics</a></dt>
+<dd class="lead clearfix"><h3><a href="/lifestyle/clip/01/awt/202107/29">2021年7月第5週　HUAWEIから新製品が多数登場</a></h3>
+<p class="data2">2021年7月第5週のAndroid関連のニュースをお届けします。</p><div class="logo"><a href="/lifestyle/clip/01/awt"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2013/thumb/TH64_1152_awt.png" data-srcset="/assets/images/ICON/2013/thumb/TH64_1152_awt.png 1x, /assets/images/ICON/2013/thumb/TH128_1152_awt.png 2x" alt="Android Weekly Topics" title="Android Weekly Topics" width="64" height="64" /><noscript><img src="/assets/images/ICON/2013/thumb/TH64_1152_awt.png" alt="Android Weekly Topics" title="Android Weekly Topics" width="64" height="64" /></noscript></a></div></dd>
+</dl>
+
+
+<p class="linkParagraph01"><a href="contentslist">記事一覧</a></p>
+</div>
+
+
+</div>
+</article>
+<aside>
+<div id="secondary" class="robots-nocontent" itemscope itemtype="http://schema.org/WPSideBar">
+<div id="secondaryTopTextPr" class="textPR" style="height: 0">
+<div class="prList01">
+<div id="div-gpt-ad-1369887592403-2" style="min-width:300px; min-height:auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-2'); });
+</script>
+</div>
+
+<div id="div-gpt-ad-1369887592403-3" style="min-width:300px; min-height:auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-3'); });
+</script>
+</div>
+
+</div>
+</div>
+<div class="banner">
+<div id="div-gpt-ad-1369887592403-4" style="min-width:300px; min-height:250px; margin:0 auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-4'); });
+</script>
+</div>
+
+</div>
+<div id="gdp" class="sectionBlock04 clearfix">
+<div id="div-gpt-ad-1369887592403-14" style="min-width:300px; min-height:100px; margin:0 auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-14'); });
+</script>
+</div>
+
+</div>
+
+<div id="gihyojpSpecial"  class="sectionBlock04 clearfix">
+<h2>ピックアップ</h2>
+<dl class="definition01">
+<dt><a href="dev/serial/01/git-resocia">ヒューマンリソシアのGITサービスが目指す，時代にアジャストするエンジニアチームの作り方</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/dev/serial/01/git-resocia"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2021/thumb/TH64_1843_git-resocia.png" data-srcset="/assets/images/ICON/2021/thumb/TH64_1843_git-resocia.png 1x, /assets/images/ICON/2021/thumb/TH128_1843_git-resocia.png 2x" alt="ヒューマンリソシアのGITサービスが目指す，時代にアジャストするエンジニアチームの作り方" title="ヒューマンリソシアのGITサービスが目指す，時代にアジャストするエンジニアチームの作り方" width="64" height="64" /><noscript><img src="/assets/images/ICON/2021/thumb/TH64_1843_git-resocia.png" alt="ヒューマンリソシアのGITサービスが目指す，時代にアジャストするエンジニアチームの作り方" title="ヒューマンリソシアのGITサービスが目指す，時代にアジャストするエンジニアチームの作り方" width="64" height="64" /></noscript></a></div>
+<p>アフターコロナにおけるエンジニアチームの作り方，グローバルな視点でのエンジニア獲得と開発とコミュニケーションの在り方について取り上げます。</p>
+</dd>
+<dt><a href="dev/serial/01/line2021">LINE テクノロジー＆エンジニアリング大全</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/dev/serial/01/line2021"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2021/thumb/TH64_1838_LINE2021b.jpg" data-srcset="/assets/images/ICON/2021/thumb/TH64_1838_LINE2021b.jpg 1x, /assets/images/ICON/2021/thumb/TH128_1838_LINE2021b.jpg 2x" alt="LINE テクノロジー＆エンジニアリング大全" title="LINE テクノロジー＆エンジニアリング大全" width="64" height="64" /><noscript><img src="/assets/images/ICON/2021/thumb/TH64_1838_LINE2021b.jpg" alt="LINE テクノロジー＆エンジニアリング大全" title="LINE テクノロジー＆エンジニアリング大全" width="64" height="64" /></noscript></a></div>
+<p>「LINE DEVELOPER DAY 2020」より，注目すべきテクノロジー，エンジニアリングをピックアップし，詳説インタビューを実施しました。</p>
+</dd>
+<dt><a href="news/interview/2020/12/1501">プロダクト思考で開発が進む「みてね」の今とこれから～みてねの生みの親笠原健治氏，開発マネージャ酒井篤氏が考える，プロダクトとエンジニアリングの素敵な関係</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/news/interview/2020/12/1501"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2020/thumb/TH64_1832_mitene1215interview2.png" data-srcset="/assets/images/ICON/2020/thumb/TH64_1832_mitene1215interview2.png 1x, /assets/images/ICON/2020/thumb/TH128_1832_mitene1215interview2.png 2x" alt="プロダクト思考で開発が進む「みてね」の今とこれから～みてねの生みの親笠原健治氏，開発マネージャ酒井篤氏が考える，プロダクトとエンジニアリングの素敵な関係" title="プロダクト思考で開発が進む「みてね」の今とこれから～みてねの生みの親笠原健治氏，開発マネージャ酒井篤氏が考える，プロダクトとエンジニアリングの素敵な関係" width="64" height="64" /><noscript><img src="/assets/images/ICON/2020/thumb/TH64_1832_mitene1215interview2.png" alt="プロダクト思考で開発が進む「みてね」の今とこれから～みてねの生みの親笠原健治氏，開発マネージャ酒井篤氏が考える，プロダクトとエンジニアリングの素敵な関係" title="プロダクト思考で開発が進む「みてね」の今とこれから～みてねの生みの親笠原健治氏，開発マネージャ酒井篤氏が考える，プロダクトとエンジニアリングの素敵な関係" width="64" height="64" /></noscript></a></div>
+<p>「家族アルバム みてね」を支えるエンジニアリングについて，開発体制やプロダクトの開発・運用，これからのビジョンについて伺いました。</p>
+</dd>
+<dt><a href="news/interview/2020/12/0101">自分の証明と持続的な学びがこれからのDX人材の鍵を握る ～A-BANKが考えるDX人材バンクの在り方とは？</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/news/interview/2020/12/0101"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2020/thumb/TH64_1830_interview_dx_A-bank.png" data-srcset="/assets/images/ICON/2020/thumb/TH64_1830_interview_dx_A-bank.png 1x, /assets/images/ICON/2020/thumb/TH128_1830_interview_dx_A-bank.png 2x" alt="自分の証明と持続的な学びがこれからのDX人材の鍵を握る ～A-BANKが考えるDX人材バンクの在り方とは？" title="自分の証明と持続的な学びがこれからのDX人材の鍵を握る ～A-BANKが考えるDX人材バンクの在り方とは？" width="64" height="64" /><noscript><img src="/assets/images/ICON/2020/thumb/TH64_1830_interview_dx_A-bank.png" alt="自分の証明と持続的な学びがこれからのDX人材の鍵を握る ～A-BANKが考えるDX人材バンクの在り方とは？" title="自分の証明と持続的な学びがこれからのDX人材の鍵を握る ～A-BANKが考えるDX人材バンクの在り方とは？" width="64" height="64" /></noscript></a></div>
+<p>2020年11月にスタートしたA-BANKの人材バンク。評価・育成・紹介の一体型人材紹介から見える，これからの人材エコシステムに迫ります。</p>
+</dd>
+<dt><a href="dev/column/01/prog/2020/04/api_servicemesh">APIゲートウェイとサービスメッシュの違い</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/dev/column/01/prog/2020/04/api_servicemesh"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2020/thumb/TH64_1812_api_servicemesh.png" data-srcset="/assets/images/ICON/2020/thumb/TH64_1812_api_servicemesh.png 1x, /assets/images/ICON/2020/thumb/TH128_1812_api_servicemesh.png 2x" alt="APIゲートウェイとサービスメッシュの違い" title="APIゲートウェイとサービスメッシュの違い" width="64" height="64" /><noscript><img src="/assets/images/ICON/2020/thumb/TH64_1812_api_servicemesh.png" alt="APIゲートウェイとサービスメッシュの違い" title="APIゲートウェイとサービスメッシュの違い" width="64" height="64" /></noscript></a></div>
+<p>APIゲートウェイとサービスメッシュの，それぞれの概要とユースケースを紹介し，いずれを使用するかの判断の指針となるチートシートを提供しています。</p>
+</dd>
+
+<!--<dt><a href="news/interview/2019/11/0801">技術的好奇心を満たせる2日間 ―「LINE DEVELOPER DAY 2019」へ行こう</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/news/interview/2019/11/0801"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2019/thumb/TH64_1786_LDD2019.png" data-srcset="/assets/images/ICON/2019/thumb/TH64_1786_LDD2019.png 1x, /assets/images/ICON/2019/thumb/TH128_1786_LDD2019.png 2x" alt="技術的好奇心を満たせる2日間 ―「LINE DEVELOPER DAY 2019」へ行こう" title="技術的好奇心を満たせる2日間 ―「LINE DEVELOPER DAY 2019」へ行こう" width="64" height="64" /><noscript><img src="/assets/images/ICON/2019/thumb/TH64_1786_LDD2019.png" alt="技術的好奇心を満たせる2日間 ―「LINE DEVELOPER DAY 2019」へ行こう" title="技術的好奇心を満たせる2日間 ―「LINE DEVELOPER DAY 2019」へ行こう" width="64" height="64" /></noscript></a></div>
+<p>今年で5回目を迎える技術カンファレンス「LINE DEVELOPER DAY 2019」。LINEのエンジニア3名がイベントに先駆けて見どころを紹介します。</p>
+</dd>
+<dt><a href="dev/serial/01/code_dev_cycle">コードの安全性・安定性を高める開発サイクル～テスト管理の効率を上げ，脆弱性診断を自動で行う～</a></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/dev/serial/01/code_dev_cycle"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2019/thumb/TH64_1751_code_dev_cycle.png" data-srcset="/assets/images/ICON/2019/thumb/TH64_1751_code_dev_cycle.png 1x, /assets/images/ICON/2019/thumb/TH128_1751_code_dev_cycle.png 2x" alt="コードの安全性・安定性を高める開発サイクル ～テスト管理の効率を上げ，脆弱性診断を自動で行う～" title="コードの安全性・安定性を高める開発サイクル ～テスト管理の効率を上げ，脆弱性診断を自動で行う～" width="64" height="64" /><noscript><img src="/assets/images/ICON/2019/thumb/TH64_1751_code_dev_cycle.png" alt="コードの安全性・安定性を高める開発サイクル ～テスト管理の効率を上げ，脆弱性診断を自動で行う～" title="コードの安全性・安定性を高める開発サイクル ～テスト管理の効率を上げ，脆弱性診断を自動で行う～" width="64" height="64" /></noscript></a></div>
+<p>本連載では，連載「業務を改善する情報共有の仕掛け」を受けつつ，安全性・安定性を加えた開発サイクルについて考えていきます。</p>
+</dd>-->
+
+</dl>
+
+</div>
+
+<div id="eventInfo" class="sectionBlock04 clearfix"></div>
+<div class="banner">
+<div id="div-gpt-ad-1369887592403-5" style="min-width:300px; min-height:250px; margin:0 auto" class="is-banner">
+<script type='text/javascript'>
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1369887592403-5'); });
+</script>
+</div>
+
+</div>
+<div id="serialList" class="sectionBlock01">
+<h2>よく読まれている連載</h2>
+<dl class="thumbnailList01">
+<dt><h3 class="linkHeading02"><a href="/admin/serial/01/codt2021">"運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/admin/serial/01/codt2021"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2021/thumb/TH32_1855_codt2021.jpg" data-srcset="/assets/images/ICON/2021/thumb/TH32_1855_codt2021.jpg 1x, /assets/images/ICON/2021/thumb/TH64_1855_codt2021.jpg 2x" alt=""運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方" title=""運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方" width="32" height="32" /><noscript><img src="/assets/images/ICON/2021/thumb/TH32_1855_codt2021.jpg" alt=""運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方" title=""運用者に光を"「Cloud Operator Days Tokyo 2021」の歩き方" width="32" height="32" /></noscript></a></div>
+<p>2021年7月～開催中の「Cloud Operator Days Tokyo 2021」がなぜ注目のイベントなのか，2回にわたって紹介します。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="/dev/serial/01/line2021">LINE テクノロジー＆エンジニアリング大全</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/dev/serial/01/line2021"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2021/thumb/TH32_1838_LINE2021b.jpg" data-srcset="/assets/images/ICON/2021/thumb/TH32_1838_LINE2021b.jpg 1x, /assets/images/ICON/2021/thumb/TH64_1838_LINE2021b.jpg 2x" alt="LINE テクノロジー＆エンジニアリング大全" title="LINE テクノロジー＆エンジニアリング大全" width="32" height="32" /><noscript><img src="/assets/images/ICON/2021/thumb/TH32_1838_LINE2021b.jpg" alt="LINE テクノロジー＆エンジニアリング大全" title="LINE テクノロジー＆エンジニアリング大全" width="32" height="32" /></noscript></a></div>
+<p>2020年開催「LINE DEVELOPER DAY 2020」より，注目プロダクト，テクノロジー，エンジニアリングをピックアップし，インタビューを実施しました。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="/lifestyle/clip/01/monthly-cat">帰ってきた『技評ねこ部通信』</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/lifestyle/clip/01/monthly-cat"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2019/thumb/TH32_1729_neko2019.jpg" data-srcset="/assets/images/ICON/2019/thumb/TH32_1729_neko2019.jpg 1x, /assets/images/ICON/2019/thumb/TH64_1729_neko2019.jpg 2x" alt="帰ってきた『技評ねこ部通信』" title="帰ってきた『技評ねこ部通信』" width="32" height="32" /><noscript><img src="/assets/images/ICON/2019/thumb/TH32_1729_neko2019.jpg" alt="帰ってきた『技評ねこ部通信』" title="帰ってきた『技評ねこ部通信』" width="32" height="32" /></noscript></a></div>
+<p>技評ねこ部通信が帰ってきました！
+でも、やっぱりゆるく，不定期に更新予定です。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="/dev/serial/01/oss-db-various-news">OSSデータベース取り取り時報</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/dev/serial/01/oss-db-various-news"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2015/thumb/TH32_1433_oss-db-various-news.png" data-srcset="/assets/images/ICON/2015/thumb/TH32_1433_oss-db-various-news.png 1x, /assets/images/ICON/2015/thumb/TH64_1433_oss-db-various-news.png 2x" alt="OSSデータベース取り取り時報" title="OSSデータベース取り取り時報" width="32" height="32" /><noscript><img src="/assets/images/ICON/2015/thumb/TH32_1433_oss-db-various-news.png" alt="OSSデータベース取り取り時報" title="OSSデータベース取り取り時報" width="32" height="32" /></noscript></a></div>
+<p>本連載では，いろいろな種類のOSSデータベースに関する各月の出来事をお伝えいたします。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="/admin/serial/01/tcp-cc">基本から学ぶ　TCPと輻輳制御 ……押さえておきたい輻輳制御アルゴリズム</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/admin/serial/01/tcp-cc"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/cover/2019/thumb/TH32_9784297106232.jpg" data-srcset="/assets/images/cover/2019/thumb/TH32_9784297106232.jpg 1x, /assets/images/cover/2019/thumb/TH64_9784297106232.jpg 2x" alt="基本から学ぶ　TCPと輻輳制御 ……押さえておきたい輻輳制御アルゴリズム" title="基本から学ぶ　TCPと輻輳制御 ……押さえておきたい輻輳制御アルゴリズム" width="32" height="45" /><noscript><img src="/assets/images/cover/2019/thumb/TH32_9784297106232.jpg" alt="基本から学ぶ　TCPと輻輳制御 ……押さえておきたい輻輳制御アルゴリズム" title="基本から学ぶ　TCPと輻輳制御 ……押さえておきたい輻輳制御アルゴリズム" width="32" height="45" /></noscript></a></div>
+<p>本連載ではTCP/IPの中でも特に，新たなアルゴリズム登場の背景として，ネットワーク環境の変化や，TCP輻輳制御アルゴリズムの変遷と概要をみていきます。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="/lifestyle/clip/01/awt">Android Weekly Topics</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/lifestyle/clip/01/awt"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2013/thumb/TH32_1152_awt.png" data-srcset="/assets/images/ICON/2013/thumb/TH32_1152_awt.png 1x, /assets/images/ICON/2013/thumb/TH64_1152_awt.png 2x" alt="Android Weekly Topics" title="Android Weekly Topics" width="32" height="32" /><noscript><img src="/assets/images/ICON/2013/thumb/TH32_1152_awt.png" alt="Android Weekly Topics" title="Android Weekly Topics" width="32" height="32" /></noscript></a></div>
+<p>毎週，Androidにまつわるトピックやニュースについて，ハードウェア/ソフトウェア問わずご紹介します。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="/admin/clip/01/ubuntu-topics">Ubuntu Weekly Topics</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/admin/clip/01/ubuntu-topics"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2008/thumb/TH32_113_ubuntuTopi.png" data-srcset="/assets/images/ICON/2008/thumb/TH32_113_ubuntuTopi.png 1x, /assets/images/ICON/2008/thumb/TH64_113_ubuntuTopi.png 2x" alt="Ubuntu Weekly Topics" title="Ubuntu Weekly Topics" width="32" height="32" /><noscript><img src="/assets/images/ICON/2008/thumb/TH32_113_ubuntuTopi.png" alt="Ubuntu Weekly Topics" title="Ubuntu Weekly Topics" width="32" height="32" /></noscript></a></div>
+<p>Ubuntuコミュニティに興味があるユーザ向けに，ML・Wiki・フォーラムなどの最新の話題を1週間分厳選してお届けします。</p>
+</dd>
+<dt><h3 class="linkHeading02"><a href="/dev/serial/01/mysql-road-construction-news">MySQL道普請便り</a></h3></dt>
+<dd class="clearfix">
+<div class="logo"><a href="/dev/serial/01/mysql-road-construction-news"><img class="lazyload" src="/assets/images/reading.gif" data-src="/assets/images/ICON/2015/thumb/TH32_1428_mysql.png" data-srcset="/assets/images/ICON/2015/thumb/TH32_1428_mysql.png 1x, /assets/images/ICON/2015/thumb/TH64_1428_mysql.png 2x" alt="MySQL道普請便り" title="MySQL道普請便り" width="32" height="32" /><noscript><img src="/assets/images/ICON/2015/thumb/TH32_1428_mysql.png" alt="MySQL道普請便り" title="MySQL道普請便り" width="32" height="32" /></noscript></a></div>
+<p>本連載では，MySQLを使ったアプリ開発・運用に関するノウハウをご紹介していきます。</p>
+</dd>
+
+</dl>
+<p class="linkParagraph01"><a href="/serial">連載一覧</a></p>
+</div>
+<div id="gihyojpSpecial"  class="sectionBlock04 clearfix">
+<h2>gihyo.jp Special</h2>
+<ul class="linkList02">
+
+<li><a href="ad/ai/grapecity">GrapeCity Special Room</a></li>
+<li><a href="ad/01/azure_frontier">Windows Azure ユーザーズフロンティア</a></li>
+<li><a href="ad/01/infra">gihyo.jp インフラエンジニア情報局</a></li>
+<li><a href="ad/01/power_up">エンジニアパワーアップ講座 ～システム基盤を活用するための基礎知識～</a></li>
+<li><a href="ad/2008/test">テストエンジニア ステーション</a></li>
+</ul>
+
+</div>
+
+
+</div>
+</aside>
+</div>
+<aside>
+<div id="sub" class="robots-nocontent" itemscope itemtype="http://schema.org/WPSideBar">
+
+<div id="contentList" class="sectionBlock02">
+<div class="section">
+<h2><a href="/" class="gihyojp"><img src="/assets/templates/gihyojp2007/image/gihyojp_logo.png" alt="gihyo.jp" width="84" height="16" /></a></h2>
+<ul class="level01">
+<li><a href="/dev" title="DEVELOPER STAGE">デベロッパ</a></li><li><a href="/admin" title="ADMINISTRATOR STAGE">アドミニストレータ</a></li><li><a href="/design" title="WEB+DESIGN STAGE">WEB+デザイン</a></li><li><a href="/lifestyle" title="LIFESTYLE STAGE">ライフスタイル</a></li><li><a href="/science" title="SCIENCE STAGE">サイエンス</a></li><li><a href="/news" title="NEWS &amp; REPORT">ニュース&amp;レポート</a></li></ul>
+</div>
+<div class="section">
+<h2><a href="/book">書籍案内</a></h2>
+<ul class="level01"><li><a href="/book/list" title="新刊書籍">新刊書籍</a></li><li><a href="/book/genre" title="書籍ジャンル一覧">書籍ジャンル一覧</a></li><li><a href="/book/series" title="書籍シリーズ一覧">書籍シリーズ一覧</a></li><li><a href="/book/pickup" title="新刊ピックアップ">新刊ピックアップ</a></li><li><a href="/book/longseller" title="ロングセラー">ロングセラー</a></li><li><a href="/book/dennou" title="電脳会議">電脳会議</a></li></ul>
+</div>
+<div class="section">
+<h2><a href="/magazine">定期刊行物一覧</a></h2>
+<ul class="level01">
+<li><a href="/magazine/SD" title="Software Design" class="sd">Software Design</a></li><li><a href="/magazine/wdpress" title="WEB+DB PRESS" class="wdpress">WEB+DB PRESS</a></li></ul>
+</div>
+<div class="section">
+<h2><a href="https://direct.gihyo.jp" title="Gihyo Direct" style="background-image: none;padding-left: 7px;"><img src="/assets/images/ICON/direct-icon.png" width="24" height="17" style="position:relative;top:11px;margin-right:4px;">直販ストア</a></h2>
+<ul class="level01">
+<li><a href="https://direct.gihyo.jp/view/news/list" title="ストアからのお知らせ">お知らせ</a></li>
+<li><a href="https://direct.gihyo.jp/view/guide" title="ストアについてのヘルプ">ご利用ガイド</a></li>
+</ul>
+</div>
+<div class="section">
+<h2><a href="https://gihyo.jp/dp" title="Gihyo Digital Publishing" style="background-image: none;padding-left: 7px;"><img src="/dp/assets/gdp-icon.png" width="24" height="24" style="position:relative;top:7px;margin-right:2px;">電子書籍ストア</a></h2>
+<ul class="level01">
+<li><a href="https://gihyo.jp/dp/information" title="ストアからのお知らせ">お知らせ</a></li>
+<li><a href="https://gihyo.jp/dp/help" title="ストアについてのヘルプ">ご購入方法・読み方</a></li>
+</ul>
+</div>
+</div>
+
+<div id="recentTag" class="sectionBlock01">
+<h2 class="bigBullet">主なタグ</h2>
+<ul class="linkList01">
+<li><a href="/tagList/Ubuntu" rel="tag">Ubuntu</a></li>
+<li><a href="/tagList/FreeBSD" rel="tag">FreeBSD</a></li>
+<li><a href="/tagList/Linux" rel="tag">Linux</a></li>
+<li><a href="/tagList/Web%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3" rel="tag">Webデザイン</a></li>
+<li><a href="/tagList/%E3%82%B9%E3%83%9E%E3%83%BC%E3%83%88%E3%83%95%E3%82%A9%E3%83%B3" rel="tag">スマートフォン</a></li>
+<li><a href="/tagList/Android" rel="tag">Android</a></li>
+<li><a href="/tagList/Web%E5%BA%83%E5%91%8A" rel="tag">Web広告</a></li>
+<li><a href="/tagList/Web%E3%83%86%E3%82%AF" rel="tag">Webテク</a></li>
+
+</ul>
+<p class="linkParagraph02"><a href="/tagList">[ タグ一覧 ]</a></p>
+</div>
+<div id="contentsRank" class="sectionBlock01">
+<h2 class="bigBullet">昨日よく読まれた記事</h2>
+<ul class="linkList01">
+<li><a href="/news/interview/01/ml_engineer/0001">第1回　自分にしか書けないものにこだわった ―異色の機械学習書誕生の裏側</a></li>
+<li><a href="/admin/clip/01/ubuntu-topics/202108/06">2021年8月6日号　Ubuntu 20.04.3の準備，LaunchpadのPython3マイグレーション</a></li>
+<li><a href="/admin/serial/01/codt2021/0002">#02　編集部お勧めセッションはこれだ！ ―「Cloud Operator Days Tokyo 2021」を楽しもう</a></li>
+<li><a href="/admin/serial/01/ubuntu-recipe/0677">第677回　aptで使うsources.listのオプションいろいろ</a></li>
+<li><a href="/design/clip/01/weekly-web-tech/202108/05">2021年8月第1週号 1位は，UI／UXのちょっとしたテクニックいろいろ，気になるネタは，ザッカーバーグ氏は110兆円規模のフェイスブックを「メタバース」企業にすると投資家に語る</a></li>
+<li><a href="/admin/clip/01/linux_dt/202108/03">2021年8月3日　誰もメンテしてくれなくなったから ―openSUSEプロジェクト，コミュニティポータルをシャットダウン</a></li>
+<li><a href="/lifestyle/clip/01/awt/202108/05">2021年8月第1週　3番目のポストは元から存在しない？ モバイルOS温故知新</a></li>
+<li><a href="/book/pickup/2019/0006">知っておきたい！ 文字コードの基礎知識 ……ASCII，シフトJIS，Unicode etc.</a></li>
+<li><a href="/dev/serial/01/mysql-road-construction-news/0152">第152回　パスワード検証必須ポリシーとログイン失敗時のアカウントの一時ロック</a></li>
+<li><a href="/lifestyle/clip/01/monthly-cat/202107/0802">2021年8月2日　す，すけきよ！？</a></li>
+
+</ul>
+</div>
+
+
+</div>
+</aside>
+
+</div>
+<footer role="contentinfo">
+<div id="footer" itemscope itemtype="http://schema.org/WPFooter">
+
+<div id="footerContent" class="clearfix">
+
+<div id="information">
+<h2><a href="/mail">メールでのお知らせ</a></h2>
+<p>メールで次の案内をお送りしております。メールの配信を希望する方は，利用したい項目をチェックしてメールアドレスを入力し，［登録］ボタンをクリックしてください。</p>
+<form id="informationForm" name="informationForm" method="post" action="/mail?mailregist#mailinfo">
+<ul>
+<li><input type="checkbox" id="informationFormCheck00" name="gihyojp" value="checked" checked="checked" />
+<label for="informationFormCheck00">gihyo.jp UPDATES［ほぼ週間に1回］</label>
+</li>
+<li><input type="checkbox" id="informationFormCheck01" name="newPublished" value="checked" checked="checked" />
+<label for="informationFormCheck01">新刊メールマガジン［ほぼ週間に1回］</label>
+</li>
+<li><input type="checkbox" id="informationFormCheck02" name="dennou" value="checked" checked="checked" />
+<label for="informationFormCheck02">電脳会議の各号案内［ほぼ1ヵ月半に1回］</label></li>
+</ul>
+<p class="submit"><input name="mailaddress" id="informationFormEmail" type="email" value="e-mailアドレスを入力" autocapitalize="off" autocorrect="off" autocomplete="email" onfocus="this.value=(this.value=='e-mailアドレスを入力')? '' : this.value ;" onblur="this.value=(this.value=='')? 'e-mailアドレスを入力' : this.value ;" />
+<input class="submitButton" id="informationFormSubmit" type="submit" value="登録" /></p>
+</form>
+<p class="note">※変更する場合や停止する場合は，<a href="/mail">登録情報変更ページ</a>をご覧ください。</p>
+<p class="note">※登録いただいたメールアドレスには，そのお知らせ以外，配信いたしません。</p>
+</div>
+
+<div id="siteSummary">
+<h2><a href="/site">このサイトについて</a></h2>
+<ul>
+<li><a href="/site/profile">会社案内</a></li>
+<li><a href="/site/policy">プライバシーポリシー</a></li>
+<li><a href="/site/social">ソーシャルメディアの運用について</a></li>
+<li><a href="/sales">刊行物の購入について</a></li>
+
+<li><a href="/cmd">カスタム出版・マーケティングのご案内</a></li>
+<li><a href="/site/inquiry">お問い合わせ</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="utility">
+<ul class="logoIcon">
+<li class="num01"><a href="/magazine/SD" title="「Software Design」のトップページに移動"><img src="/assets/templates/gihyojp2007/image/btn_icon_sd.gif" alt="Software Design" width="23" height="21" class="buttons" /></a></li>
+<li class="num02"><a href="/magazine/wdpress" title="「WEB+DB PRESS」のトップページに移動"><img src="/assets/templates/gihyojp2007/image/btn_icon_wd.gif" alt="WEB+DB PRESS" width="23" height="21" class="buttons" /></a></li>
+</ul>
+
+<p class="feed"><a href="/feed" title="gihyo.jpのフィードを確認">RSS/ATOM</a></p>
+<p id="gotoHeader"><a href="/#header">このページの先頭へ</a></p>
+</div>
+
+<div id="copyright">
+<div class="logo"><a href="http://www.gihyo.co.jp/"><img src="/assets/templates/gihyojp2007/image/gihyo_logo.png" alt="技術評論社" width="113" height="18" /></a></div>
+<p>Copyright &copy; 2007-2021 All Rights Reserved by Gijutsu-Hyohron Co., Ltd.<br />ページ内容の全部あるいは一部を無断で利用することを禁止します。個別にライセンスが設定されている記事等はそのライセンスに従います。</p>
+</div>
+
+</div>
+</footer>
+
+</div>
+<script>var o = document.querySelector('#primary .readingContent01');if(window.navigator.userAgent.toLowerCase().indexOf('android') > -1 && o){o.style.textAlign = 'left'}</script>
+<noscript><link rel="stylesheet" href="/assets/templates/gihyojp2007/css/setAll0514.css" /></noscript>
+<script type="text/javascript">var l=document.createElement('link');l.setAttribute('rel','stylesheet');l.setAttribute('type','text/css');l.setAttribute('media','all');l.setAttribute('href','/assets/templates/gihyojp2007/css/setAll0514.css');document.head.appendChild(l);l=null;</script><script src="/assets/js/lazysizes.min.js" async=""></script><script type="text/javascript">
+$('#searchFormKeyword, #searchForm form').focus(function(e){this.value=(this.value=='検索したい用語を入力')?'':this.value;}).blur(function(e){this.value=(this.value=='')?'検索したい用語を入力':this.value;}).submit(function(e){this.value=(this.value=='検索したい用語を入力')?'':this.value;});
+function loadScript(src,callback){var e=document.createElement('script');if(e.readyState){e.onreadystatechange=function(){if(e.readyState=='loaded'||e.readyState=='complete'){e.onreadystatechange=null;callback();}};}else{e.onload=function(){callback();}};e.type='text/javascript';e.async=true;e.src=src;var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(e,s);}
+loadScript('/assets/js/smoothscroll-min.js',function(){});
+</script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-DL906V3TN7');
+</script>
+<script type="text/javascript">
+(function(a){a("a img.buttons").hover(function(){this.originalSrc=a(this).attr("src");this.rolloverSrc=this.originalSrc.replace(/(_on)?(.gif|.jpg|.png)$/,"_on$2");this.rolloverImg=new Image;this.rolloverImg.src=this.rolloverSrc;a(this).attr("src",this.rolloverSrc)},function(){a(this).attr("src",this.originalSrc)})})(jQuery);
+(function(n){var m=new function(){for(var a="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".split(""),b=[],c=0;64>c;c++)b["ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/".charAt(c)]=c;this.encode=function(b,c){var d=c?l.unpackUTF8(b):l.unpackChar(b),i=d.length%3,h="",f,j=0;if(i)for(f=3-i;0<f;f--)d[d.length]=0;for(f=0;f<d.length;f+=3)j=d[f]<<16|d[f+1]<<8|d[f+2],h+=a[j>>>18&63]+a[j>>>12&63]+a[j>>>6&63]+a[j&63];if(i){i=3-i;for(h=h.substr(0,h.length-i);i--;)h+="="}return h};
+this.decode=function(a,c){var d;d=a.replace(/[^A-Za-z0-9\+\/]/g,"");var i=d.length%4,h,f,j,k=[];if(i)for(f=0;f<4-i;f++)d+="A";for(h=f=0;f<d.length;f+=4,h+=3)j=b[d.charAt(f)]<<18|b[d.charAt(f+1)]<<12|b[d.charAt(f+2)]<<6|b[d.charAt(f+3)],k[h]=j>>>16,k[h+1]=j>>>8&255,k[h+2]=j&255;i&&(k.length-=[0,0,2,1][i]);return c?l.packUTF8(k):l.packChar(k)}},l=new function(){this.unpackUTF16=function(a){var b,c=[];for(b=0;b<a.length;b++)c[b]=a.charCodeAt(b);return c};this.unpackChar=function(a){var a=this.unpackUTF16(a),
+b,c,e=[];for(c=b=0;b<a.length;b++)255>=a[b]?e[c++]=a[b]:(e[c++]=a[b]>>8,e[c++]=a[b]&255);return e};this.packChar=this.packUTF16=function(a){var b,c="";for(b in a)c+=String.fromCharCode(a[b]);return c};this.unpackUTF8=function(a){return this.toUTF8(this.unpackUTF16(a))};this.packUTF8=function(a){return this.packUTF16(this.toUTF16(a))};this.toUTF8=function(a){var b=[],c=0,e,g,d;for(e=0;e<a.length;e++)if(d=a[e],127>=d)b[c++]=d;else if(2047>=d)b[c++]=192|d>>>6,b[c++]=128|d&63;else if(65535>=d)b[c++]=
+224|d>>>12,b[c++]=128|d>>>6&63,b[c++]=128|d&63;else{for(g=4;d>>6*g;)g++;for(b[c++]=65280>>>g&255|d>>>6*--g;g--;)b[c++]=128|d>>>6*g&63}return b};this.toUTF16=function(a){var b=[],c=0,e,g;for(e=0;e<a.length;e++,c++)if(127>=a[e])b[c]=a[e];else if(6==a[e]>>5)b[c]=(a[e]&31)<<6|a[++e]&63;else if(14==a[e]>>4)b[c]=(a[e]&15)<<12|(a[++e]&63)<<6|a[++e]&63;else{for(g=1;a[e]&32>>>g;)g++;for(b[c]=a[e]&31>>>g;0<=g--;)b[c]=b[c]<<6^a[++e]&63}return b};this.URLencode=function(a){return a.replace(/([^a-zA-Z0-9_\-\.])/g,
+function(a,c){if(" "==c)return"+";var e=l.toUTF8([c.charCodeAt(0)]),g="",d;for(d in e)d=e[d].toString(16),1==d.length&&(d="0"+d),g+="%"+d;return g})};this.URLdecode=function(a){a=a.replace(/\+/g," ");a=a.replace(/%([a-fA-F0-9][a-fA-F0-9])/g,function(a,c){return String.fromCharCode(parseInt(c,16))});return this.packChar(this.toUTF16(this.unpackUTF16(a)))}};n.extend({base64:{encode:m.encode,decode:m.decode,codec:"function"==typeof atob?"builtin":"alternate"}})})(jQuery);
+window.onerror=function(mes,fname,lnum){var erIgnore=['top.GLOBALS','originalCreateNotification','canvas.contentDocument','fb_xd_fragment','Script error.'];for(i=0;i<erIgnore.length;i++){if(mes.indexOf(erIgnore[i])>-1){return false;}};var mes='message:'+mes+', file:'+fname+', line:'+lnum+', href:'+location.href+', UA:'+window.navigator.userAgent;gtag('event','JSError',{'event_category':'Error','event_label':mes});};
+if (typeof(gtag) !== 'undifined') {
+  obj = document.querySelectorAll('.storeLink01 a');
+  for (k in obj) {
+    if (isNaN(k)) continue;
+    a = obj[k];
+    a.addEventListener('click', function(e){
+      label = e.target.textContent;
+      gtag('event', 'page_view', {page_location: '/go-' + encodeURIComponent(label)});
+    });
+  }
+}</script>
+
+
+
+<script type="text/javascript">
+var html = "<h2>イベント</h2>\n<ul class=\"linkList02\">\n";
+var array = {
+'https://2021.bit-valley.jp/program/hello-tech/': 'QklUIFZBTExFWSAyMDIxICMwMiBIZWxsbywgdGVjaCHjgI7op6bjgozjgabjgIHlrabjgpPjgafjgIHmpb3jgZfjgoDjgI/vvIg4LzEx77yJ',
+'https://cedec.cesa.or.jp/2021/': 'Q0VERUMyMDIx77yIOC8yNOOAnDI277yJ',
+'https://cloudopsdays.com/': 'Q2xvdWQgT3BlcmF0b3IgRGF5cyBUb2t5byAyMDIx77yINy8xNO+9njgvMjfvvIk=',
+'https://2021.bit-valley.jp/program/new-world/': 'QklUIFZBTExFWSAyMDIxICMwMyBXZWxjb21lIHRvIE5ldyBXb3JsZOOAjuODhuOCr+ODjuODreOCuOODvOOBjOWPtuOBiOOCi+aWsOOBl+OBhOS4lueVjOOAj++8iDkvOO+8iQ==',
+'https://rubykaigi.org/2021-takeout': 'UnVieUthaWdpIFRha2VvdXQgMjAyMe+8iDkvOeOAnDEx77yJ',
+'https://iosdc.jp/2021/': 'aU9TREMgSmFwYW4gMjAyMe+8iDkvMTfjgJwxOe+8iQ==',
+'https://phpcon.php.gr.jp/2021/': 'UEhQIOOCq+ODs+ODleOCoeODrOODs+OCuSAyMDIx77yIMTAvMiwgM++8iQ==',
+'https://reactnative-matsuri.com/': 'UmVhY3QgTmF0aXZlIE1hdHN1cmkgMjAyMe+8iDEwLzLvvIk=',
+'https://2021.bit-valley.jp/program/dx/': 'QklUIFZBTExFWSAyMDIxICMwNCBQb3dlciBvZiBEaWdpdGFs44CO5pyA5pawRFjkuovmg4XjgJzjg4fjgrjjgr/jg6vjga7lipvjgafjgojjgorosYrjgYvjgavjgJzjgI/vvIgxMC8477yJ',
+'https://2021.pycon.jp/': 'UHlDb24gSlAgMjAyMe+8iDEwLzE1LCAxNu+8iQ==',
+'https://droidkaigi.jp/2021/': 'RHJvaWRLYWlnaSAyMDIx77yIMTAvMTnjgJwyMe+8iQ==',
+'https://maxjapan.adobe.com/': 'QWRvYmUgTUFYIDIwMjHvvIgxMC8yNuOAnDI477yJ',
+'https://events.linuxfoundation.org/open-source-summit-japan/': 'T3BlbiBTb3VyY2UgU3VtbWl0IEphcGFuIDIwMjHvvIgxMi8xNCwgMTXvvIk=',
+
+};
+for(key in array){
+  var str = $.base64.decode(array[key], 1);
+  var tmp = str.match(/^(.+?)(（.+?）)$/);
+  if(tmp){
+    html = html + '<li><a href="' + key + '" rel="external">' + tmp[1] + '</a>' + tmp[2] + "</li>\n";
+  }
+}
+html = html + "</ul>";
+document.getElementById("eventInfo").innerHTML = html;
+</script>
+
+
+</body>
+</html>

@@ -6,12 +6,14 @@ import time
 import requests
 import lxml.html
 
+from pymongo import MongoClient
+
 def main():
     """
     クローラーのメインの処理
     """
     # ローカルホストのMongoDBに接続する
-    #client = MongoClient('localhost', 27017)
+    client = MongoClient('localhost', 27017)
     # scrapingデータベースのebooksコレクションを得る
     #collection = client.scraping.ebooks
     # データを一位に識別するキーを格納するkeyフィールドにユニークなインデックスを作成する
