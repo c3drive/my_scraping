@@ -20,11 +20,19 @@ RUN /usr/local/bin/python -m pip install --upgrade pip && \
     pip install requests && \
     pip install beautifulsoup4 && \
     pip install requests-oauthlib && \
-    pip install wikiextractor
+    pip install wikiextractor && \
+    pip install pymongo && \
+    pip install google-api-python-client
 
 # forego
 RUN wget https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.deb && \
     apt-get -y install ./forego-stable-linux-amd64.deb
+
+# MongDB
+RUN wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add - && \
+    echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list && \
+    sudo apt-get update && \
+    sudo apt-get install -y mongodb-org
 
 # sqlite
 RUN apt-get install -y sqlite3
