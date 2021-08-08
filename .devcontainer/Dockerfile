@@ -27,18 +27,35 @@ RUN /usr/local/bin/python -m pip install --upgrade pip && \
     pip install xlrd && \
     pip install openpyxl && \
     pip install matplotlib && \
-    pip install japanize-matplotlib
+    pip install japanize-matplotlib && \
+    pip install pdfminer.six && \
+    pip install selenium
 
+
+# PhantomJS
+# RUN wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+#     tar xvf phantomjs-2.1.1-linux-x86_64.tar.bz2 && \
+#     cp phantomjs-2.1.1-linux-x86_64/bin/phantomjs /usr/local/bin/ && \
+
+# Chrome(依存関係でdpkgエラーになる可能性があるので先に解消する)
+RUN apt-get update && apt-get install -f
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
+    apt-get install -y ./google-chrome-stable_current_amd64.deb
+# RUN apt-get install -y python3-selenium
+RUN apt install unzip && \
+    wget https://chromedriver.storage.googleapis.com/index.html?path=92.0.4515.107/chromedriver_linux64.zip && \
+    unzip chromedriver_linux64.zip && \
+    sudo mv chromedriver /usr/local/bin/
 
 # forego
 RUN wget https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.deb && \
     apt-get -y install ./forego-stable-linux-amd64.deb
 
 # MongDB
-RUN wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add - && \
-    echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list && \
-    sudo apt-get update && \
-    sudo apt-get install -y mongodb-org
+# RUN wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add - && \
+#     echo "deb http://repo.mongodb.org/apt/debian buster/mongodb-org/5.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list && \
+#     apt-get update && \
+#     apt-get install -y mongodb-org
 
 # sqlite
 RUN apt-get install -y sqlite3

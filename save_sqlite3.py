@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3 .connect('top_cities.db') # top_cities.dbファイルを開きコネクション取得
+conn = sqlite3 .connect('data/top_cities.db') # top_cities.dbファイルを開きコネクション取得
 
 c = conn.cursor()
 c.execute('DROP TABLE IF EXISTS cities')
