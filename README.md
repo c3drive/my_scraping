@@ -15,7 +15,12 @@ $ python word_frequency.py articles
 ```
 
 # twitter
-1.データフォルダ作成（すでにある場合不要）
+1.API利用申請
+https://developer.twitter.com/
+
+2.APIキーを発行して、.envに追記
+
+3.データフォルダ作成（すでにある場合不要）
 ```bash
 mkdir data
 ```
@@ -25,8 +30,10 @@ $ forego run python rest_api_with_requests_oauthlib.py
 ```
 
 # youtube
-1.アクセスして同意。プロジェクトを作る。APIキーを発行する。
+1.アクセスして同意。プロジェクトを作る。
 https://console.cloud.google.com/apis/
+
+2.APIキーを発行して、.envに追記
 
 2.Youtube Data APIを有効にする
 https://console.developers.google.com/apis/api/youtube.googleapis.com/overview?project={プロジェクトID}
@@ -68,3 +75,14 @@ $ python save_sqlite3.py
 ```bash
 $ sqlite3 top_cities.db 'SELECT * FROM cities'
 ```
+
+## 
+1.為替データ取得
+https://www.stat-search.boj.or.jp/
+2.金利情報
+https://www.mof.go.jp/jgbs/reference/interest_rate/index.htm
+3.有効求人倍率
+https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00450222&tstat=000001020327
+4.実行
+python plot_historical_data.py
+

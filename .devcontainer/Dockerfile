@@ -22,7 +22,13 @@ RUN /usr/local/bin/python -m pip install --upgrade pip && \
     pip install requests-oauthlib && \
     pip install wikiextractor && \
     pip install pymongo && \
-    pip install google-api-python-client
+    pip install google-api-python-client & \
+    pip install pandas && \
+    pip install xlrd && \
+    pip install openpyxl && \
+    pip install matplotlib && \
+    pip install japanize-matplotlib
+
 
 # forego
 RUN wget https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.deb && \
