@@ -76,7 +76,7 @@ $ python save_sqlite3.py
 $ sqlite3 top_cities.db 'SELECT * FROM cities'
 ```
 
-## 
+## ヒストリー
 1.為替データ取得
 https://www.stat-search.boj.or.jp/
 2.金利情報
@@ -86,3 +86,10 @@ https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00450222&tstat=00000102
 4.実行
 python plot_historical_data.py
 
+# Museums
+1. httpサーバ起動
+```bash
+$ python -m http.server
+```
+2.ブラウザで実行
+http://localhost:8000/museums.html

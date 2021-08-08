@@ -29,7 +29,8 @@ RUN /usr/local/bin/python -m pip install --upgrade pip && \
     pip install matplotlib && \
     pip install japanize-matplotlib && \
     pip install pdfminer.six && \
-    pip install selenium
+    pip install selenium &&\
+    pip install SPARQLWrapper
 
 
 # PhantomJS
@@ -41,11 +42,14 @@ RUN /usr/local/bin/python -m pip install --upgrade pip && \
 RUN apt-get update && apt-get install -f
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb && \
     apt-get install -y ./google-chrome-stable_current_amd64.deb
+
 # RUN apt-get install -y python3-selenium
-RUN apt install unzip && \
-    wget https://chromedriver.storage.googleapis.com/index.html?path=92.0.4515.107/chromedriver_linux64.zip && \
+RUN apt install unzip
+RUN wget https://chromedriver.storage.googleapis.com/92.0.4515.107/chromedriver_linux64.zip && \
     unzip chromedriver_linux64.zip && \
     sudo mv chromedriver /usr/local/bin/
+# スクリーンショット時のキャプチャ日本語化
+RUN apt-get install -y libfontconfig1 fonts-migmix
 
 # forego
 RUN wget https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.deb && \
