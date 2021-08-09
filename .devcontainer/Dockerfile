@@ -30,7 +30,10 @@ RUN /usr/local/bin/python -m pip install --upgrade pip && \
     pip install japanize-matplotlib && \
     pip install pdfminer.six && \
     pip install selenium &&\
-    pip install SPARQLWrapper
+    pip install SPARQLWrapper && \
+    pip install scrapy && \
+    pip install readability && \
+    pip install readability-lxml
 
 
 # PhantomJS
